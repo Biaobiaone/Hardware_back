@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.109.39.226:3306/hardware?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 060803
+    hikari:
+      maximum-pool-size: 5
+      keepalive-time: 30000  # 每30秒发个“心跳”确保连接活着
+      max-lifetime: 1800000 # 30分钟强制更换新连接
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto # Or assign_id depending on your primary key strategy
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # Print SQL in console
+    map-underscore-to-camel-case: true
+
+jwt:
+  secret: 2f9afee4274b4d6d8f52d91f0f62f0db2f9afee4274b4d6d8f52d91f0f62f0db
+  expire-hours: 24
